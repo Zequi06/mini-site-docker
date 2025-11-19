@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: mini-site
-          image: nginx:latest   # <---- TROCA AQUI
+          image: zequi06/mini-site:latest
           ports:
             - containerPort: 80
