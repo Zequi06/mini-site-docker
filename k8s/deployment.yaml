@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: mini-site
-          image: nginx:latest
+          image: nginx:latest   # <---- TROCA AQUI
           ports:
             - containerPort: 80
