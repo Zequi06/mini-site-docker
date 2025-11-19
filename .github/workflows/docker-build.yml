@@ -1,0 +1,61 @@
+name: Testar build Docker
+
+
+on:
+push:
+branches: ["main", "master"]
+pull_request:
+branches: ["main", "master"]
+
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+
+steps:
+- name: Checkout
+uses: actions/checkout@v4
+
+
+- name: Set up QEMU (optional)
+uses: docker/setup-qemu-action@v2
+
+
+- name: Set up Docker Buildx
+uses: docker/setup-buildx-action@v2
+
+
+- name: Build image (teste)
+id: build
+run: |
+set -o pipefail
+mkdir -p build-log
+# tenta construir a imagem e salva o log
+docker build -t mini-explicador . 2>&1 | tee build-log/build.txt || echo "BUILD_FAILED" > build-log/status.txt
+
+
+- name: Upload do log do build como artefato
+if: always()
+uses: actions/upload-artifact@v4
+with:
+name: build-log
+path: build-log/
+
+
+- name: Marcar status no resumo
+if: success()
+run: echo "Build concluído com sucesso." > build-log/summary.txt
+
+
+- name: Marcar status de falha no resumo
+if: failure()
+run: echo "Build falhou — consulte build-log/build.txt para detalhes." > build-log/summary.txt
+
+
+- name: Upload resumo
+if: always()
+uses: actions/upload-artifact@v4
+with:
+name: build-summary
+path: build-log/summary.txt
