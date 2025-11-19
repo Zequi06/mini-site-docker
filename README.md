@@ -15,4 +15,4 @@ O workflow `.github/workflows/docker-build.yml` tenta construir a imagem automat
 
 
 ## Relatório
-Preencha `relatorio-actions.html` com o status, logs e as tentativas de correção do build automático.
+Preencha `relatorio-actions.html` com o status, logs e as tentativas de correção do build automático .
