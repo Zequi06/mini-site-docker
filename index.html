@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mini Explicador: Docker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+<h1>Mini Explicador: Docker</h1>
+<nav>
+<a href="index.html">Início</a>
+<a href="conceitos.html">O que é Docker?</a>
+<a href="vantagens.html">Vantagens</a>
+</nav>
+</header>
+
+
+<main class="container">
+<section>
+<h2>Bem-vindo</h2>
+<p>Este mini site explica, de forma simples e objetiva, os conceitos básicos de conteinerização usando Docker. É um projeto estático (HTML + CSS) empacotado para rodar em um container nginx.</p>
+</section>
+
+
+<section>
+<h2>Como usar localmente</h2>
+<ol>
+<li>Construa a imagem: <code>docker build -t mini-explicador .</code></li>
+<li>Execute: <code>docker run -d -p 8080:80 mini-explicador</code></li>
+<li>Acesse: <a href="http://localhost:8080">http://localhost:8080</a></li>
+</ol>
+</section>
+
+
+<section>
+<h2>Entrega</h2>
+<p>Suba todo este conteúdo para um repositório público e poste o link via Teams. Não esqueça do arquivo <code>relatorio-actions.html</code> com o registro do workflow do GitHub Actions.</p>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<p>Produzido por: Seu Nome — Exemplo de mini site para atividade.</p>
+</footer>
+</body>
+</html>
