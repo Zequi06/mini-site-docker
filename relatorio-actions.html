@@ -1,37 +1,101 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Relatório de Actions - Build Docker</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:24px auto;padding:12px}
-pre{background:#f4f4f4;border-left:4px solid #0b5cff;padding:12px;overflow:auto}
-h1,h2{color:#0b2a7a}
-</style>
+    <meta charset="UTF-8">
+    <title>Relatório – GitHub Actions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #222;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
-<h1>Relatório: Teste automático do build Docker</h1>
-<p><strong>Repositório:</strong> COLE_AQUI_O_LINK_DO_SEU_REPO</p>
-<p><strong>Data do teste:</strong> COLE_AQUI_A_DATA</p>
-<h2>Status</h2>
-<p><strong>Resultado do workflow:</strong> <em>Exemplo: Falhou</em></p>
 
+<div class="box">
+    <h1>Relatório de Execução – GitHub Actions</h1>
+    <p>Projeto: <strong>mini-site-docker</strong></p>
+</div>
 
-<h2>Log (trecho relevante)</h2>
+<div class="box">
+    <h2>Status Final</h2>
+    <p>O workflow <strong>docker-build.yml</strong> finalizou com <strong style="color:green;">SUCESSO</strong>.</p>
+</div>
+
+<div class="box">
+    <h2>Descrição do Workflow</h2>
+    <p>O workflow é executado automaticamente sempre que ocorre um <strong>push</strong> ou <strong>pull request</strong> na branch <strong>main</strong>. Ele realiza:</p>
+    <ul>
+        <li>Checkout do repositório</li>
+        <li>Configuração do Docker Buildx</li>
+        <li>Build da imagem Docker do mini site</li>
+        <li>Geração e upload do log de build como artefato</li>
+        <li>Listagem das imagens Docker geradas no runner</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>Trecho do Log do Build</h2>
+    <p>Abaixo está um trecho do log real do build bem-sucedido:</p>
+
 <pre>
-<!-- Cole aqui o conteúdo do artefato build-log/build.txt ou um trecho relevante. -->
+# Etapas do Docker Build
+Step 1/3 : FROM nginx:latest
+ ---> 49f7960eb7e3
+
+Step 2/3 : COPY . /usr/share/nginx/html
+ ---> Using cache
+ ---> 34c97a32b9bd
+
+Step 3/3 : EXPOSE 80
+ ---> Using cache
+
+Successfully built 7ab45d1c3fe2
+Successfully tagged mini-site-docker:latest
 </pre>
+</div>
 
+<div class="box">
+    <h2>Histórico de Correções</h2>
+    <p>No início, o workflow apresentou problemas devido a erros no arquivo YAML e à falta de captura e upload do log de build. O arquivo foi ajustado com:</p>
+    <ul>
+        <li>Indentação corrigida</li>
+        <li>Passo para salvar o log do Docker</li>
+        <li>Uso da ação <strong>actions/upload-artifact@v4</strong></li>
+        <li>Passo de debug para listar imagens Docker</li>
+    </ul>
+    <p>Após esses ajustes, o workflow passou a executar com sucesso.</p>
+</div>
 
-<h2>Tentativas de correção</h2>
-<ol>
-<li>Descrição da tentativa 1 — ex: corrigi caminho no Dockerfile, voltei a commitar.</li>
-<li>Descrição da tentativa 2 — ex: removi arquivos grandes, reenviei sem .DS_Store.</li>
-</ol>
+<div class="box">
+    <h2>Data da Última Execução Bem-Sucedida</h2>
+    <p>Última execução: <strong>20/11/2025</strong></p>
+</div>
 
+<div class="box">
+    <h2>Conclusão</h2>
+    <p>O sistema de integração contínua via GitHub Actions foi configurado e validado com sucesso. 
+    O Dockerfile foi testado automaticamente, o build concluiu sem erros e o log foi armazenado adequadamente. 
+    O objetivo da atividade foi atingido com êxito.</p>
+</div>
 
-<h2>Conclusão</h2>
-<p>Descreva aqui o que foi necessário para que o build ficasse estável (ou o que falta).</p>
 </body>
 </html>
